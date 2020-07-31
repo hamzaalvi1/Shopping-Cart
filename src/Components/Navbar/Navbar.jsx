@@ -6,6 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import "./Navbar.css"
 import {Link} from 'react-router-dom'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles(theme => ({
     title: {
       flexGrow: 2,
@@ -19,8 +22,11 @@ const useStyles = makeStyles(theme => ({
     },
     font:{
      fontFamily: "Lato"
+    },
+    icon:{
+      color : "White"
     }
-  }));
+  }));  
 
  const  Navbar = ()=> {
    const classes = useStyles();
@@ -41,6 +47,11 @@ const useStyles = makeStyles(theme => ({
           <Link to = "signin"> 
           <Button color="inherit" className = {classes.font}>Login</Button>
           </Link>
+          <IconButton >
+            <Badge badgeContent = {0} color = "secondary">
+            <ShoppingCartIcon className = {classes.icon}/>     
+            </Badge> 
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>

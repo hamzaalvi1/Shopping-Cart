@@ -1,0 +1,35 @@
+.signIn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.paper{
+    margin: 20px  0px;
+    width: 700px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    text-align: center;
+    font-family: "Lato";
+    font-size: 39px;
+}
+.loginBtn{
+    font-family: "Lato" !important;
+    background-color: #212121 !important;
+    color: white !important
+    
+}
+.signIn p{
+    text-align: center;
+    font-family: "Lato"
+}
+.signIn p:hover{
+    color:royalblue;
+    cursor: pointer;
+   
+}
