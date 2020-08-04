@@ -1,0 +1,109 @@
+[
+    {
+        "_id": "1",
+        "title": "White Nikee.",  
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "src": "https://www.upsieutoc.com/images/2020/06/27/img1.jpg",
+        "price": "$230",
+        "colors":["red","black","crimson","teal"]
+    },
+    {
+        "_id": "2",
+        "title": "Air Black Snickers",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "src": "https://www.upsieutoc.com/images/2020/06/27/img2.jpg",
+        "price": "$190",
+        "colors":["red","crimson","teal"]
+    },
+    {
+        "_id": "3",
+        "title": "Black Cargo Nike",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "src": "https://www.upsieutoc.com/images/2020/06/27/img3.jpg",
+        "price": "$50",
+        "colors":["lightblue","white","crimson","teal"]
+    },
+    {
+        "_id": "4",
+        "title": "Nike Sports",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "src": "https://www.upsieutoc.com/images/2020/06/27/img4.jpg",
+        "price": "$150",
+        "colors":["orange","black","crimson","teal"]
+    },
+    {
+        "_id": "5",
+        "title": "Red Mountain",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "src": "https://www.upsieutoc.com/images/2020/06/27/img5.jpg",
+        "price": "$100",
+        "colors":["orange","black","crimson","teal"]
+        
+    },
+    {
+        "_id": "6",
+        "title": "Blue Slippers",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "src": "https://www.upsieutoc.com/images/2020/06/27/img6.jpg",
+        "price": "$170",
+        "colors":["orange","black","crimson","teal"]
+        
+    },
+    {
+        "_id": "7",
+        "title": "Valor Blue",
+        "src": "https://secure-images.nike.com/is/image/DotCom/CT8532_104_A_PREM?$SNKRS_COVER_WD$&align=0,1",
+        "price": "$120",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "colors":["orange","black","crimson","teal"]
+        
+    },
+    {
+        "_id": "8",
+        "title": "Jordan Mars 270 London",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "src": "https://secure-images.nike.com/is/image/DotCom/CV3042_001_A_PREM?$SNKRS_COVER_WD$&align=0,1",
+        "price": "$80",
+        "colors":["orange","black","crimson","teal"]
+        
+    },
+    {
+        "_id": "9",
+        "title": "Racer Blue",
+        "src": "https://secure-images.nike.com/is/image/DotCom/CK6637_104_A_PREM?$SNKRS_COVER_WD$&align=0,1",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+
+        "price": "$100",
+        "colors":["orange","black","crimson","teal"]
+        
+    },
+    {
+        "_id": "10",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "title": "Flat Slip Shoes",
+        "src": "https://assets.ajio.com/medias/sys_master/root/ajio/catalog/5ef38fcbf997dd433b43d714/-473Wx593H-461205998-black-MODEL.jpg",
+        "price": "$100",
+        "colors":["black"]
+        
+    },
+    {
+        "_id": "11",
+        "title": "White Adidas Shoes",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "src": "https://image.skechers.com/img/productimages/xlarge/232040_WNV.jpg",
+        "price": "$100",
+        "colors":["white"]
+        
+    },
+    {
+        "_id": "12",
+        "title": "Rocha Blue Leather Lofer",
+        "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
+        "src": "https://ae01.alicdn.com/kf/HTB1LNtIKFXXXXcxXFXXq6xXFXXXe/2014-New-Fashion-Brand-Denim-Men-Loafers-Shoes-Men-Loafer-Shoes-Blue-EUR-Size-39-44.jpg",
+        "price": "$100",
+        "colors":["black","blue"]
+        
+    }
+
+
+]
