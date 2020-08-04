@@ -11,3 +11,27 @@ body{
     color: white !important;
     flex-grow: 2 !important;
 }
+.colorCircle{
+  border-radius: 50%;
+  padding: 08px 20px;
+  margin: 10px 6px;
+ cursor: pointer;
+}
+.mainGrid{
+  display: flex;
+  flex-direction: row;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 10px
+}
+.add-to{
+  font-family: "Lato" !important;
+  background-color: #212121 !important;
+  color: white !important;
+  margin: 10px !important; 
+}
+.productImg{
+  height: 600px;
+  width: 600px;
+  cursor: pointer;
+}

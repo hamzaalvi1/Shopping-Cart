@@ -42,7 +42,6 @@ const useStyles = makeStyles({
    >
 
              {shoes.map((shoe)=>{
-                 console.log(shoe)
                  return(
                       <Grid item xs = {12} sm = {6} md = {4} lg={4} key = {shoe._id} >
                       <Card className={classes.root}>
@@ -59,6 +58,7 @@ const useStyles = makeStyles({
           <Typography variant="body2" color="textSecondary" component="p" className={classes.font}>
            {shoe.desc}
             </Typography>
+            
         </CardContent>
       </CardActionArea>
       <CardActions>
