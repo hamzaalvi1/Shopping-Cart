@@ -20,7 +20,7 @@ import Navbar from '../Navbar/Navbar'
               <Routes>
                   <Route path = "/" element = {<Home/>}/>
                   <Route path = "products" element = {<Products/>}/>
-                  <Route path = "products:prodId" element = {<Product/>}/>
+                  <Route path = "products/:prodId" element = {<Product/>}/>
                   <Route path = "signin" element = {<SignIn/>}/>
                   <Route path = "signup" element = {<SignUp/>}/>
                   <Route path = "*" element = {<NotFound/>}/>
