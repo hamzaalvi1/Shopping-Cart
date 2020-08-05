@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext,useState} from 'react'
 import {ShoeContext} from "../Context/GlobalState"
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,7 +11,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
+import ReactModal from 'react-modal';
 import "./product.css"
 const useStyles = makeStyles({
     root: {
@@ -34,8 +35,12 @@ const useStyles = makeStyles({
 
   });
  const  Products = ()=> {
+   const [isModalOpen,isSetModalOpen] = useState(false)
+   
+
+  const navigate = useNavigate()
     const classes = useStyles();
-     const {shoes} = useContext(ShoeContext)
+     const {shoes,isAuthenticated} = useContext(ShoeContext)
     return (
         <div className = "grid">
             <Grid container spacing = {2} direction="row"
@@ -63,13 +68,13 @@ const useStyles = makeStyles({
       </CardActionArea>
       <CardActions>
         <Link to = {`${shoe.title}`} > 
-        <Button className = "more-info" color="primary">
+        <Button className = "more-info" >
           More Info
         </Button>
         </Link>
 
-        <IconButton  >
-        <AddShoppingCartIcon className = {classes.icon} 	/>
+        <IconButton onClick = {()=>isAuthenticated ? isSetModalOpen(false): isSetModalOpen(true)} >
+        <AddShoppingCartIcon className = {classes.icon}    	/>
         </IconButton>
       </CardActions>
     </Card>
@@ -78,6 +83,25 @@ const useStyles = makeStyles({
                  )
              })}
              </Grid>
+             <ReactModal isOpen = {isModalOpen} shouldCloseOnOverlayClick={true} style = {{overlay:{backgroundColor: "grey"}}}>
+             <div style = {{display:"flex",flexDirection: "column",justifyContent:"center",alignItems:"center"}}>   
+             <Typography gutterBottom variant="h3" component="h2" className={classes.font}>
+            Dear User!
+          </Typography>
+          <Typography gutterBottom variant="h4" component="h2" className={classes.font}>
+            You need to log in first to add this item into cart....
+          </Typography>
+          <div style = {{display: "flex", flexDirection: "row",}}> 
+          <Button className = "more-info" onClick = {()=>{navigate("/signin")}} >
+          Click here to Login 
+        </Button>
+        <Button className = "more-info" style ={{marginLeft: "10px"}} onClick = {()=>{isSetModalOpen(false)}} >
+          Close Modal 
+        </Button>
+        </div>
+        </div>
+       </ReactModal>
+
         </div>
     )
 }
