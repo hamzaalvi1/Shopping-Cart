@@ -7,7 +7,7 @@ import SignIn from "../SignIn/SignIn"
 import SignUp from "../SignUp/SignUp"
 import NotFound from "../Notfound/NotFound"
 import Navbar from '../Navbar/Navbar'
-
+import AddtoCart from "../AddToCart/AddtoCart"
 
 
 
@@ -18,11 +18,12 @@ import Navbar from '../Navbar/Navbar'
             <Router>
                 <Navbar/>
               <Routes>
-                  <Route path = "/" element = {<Home/>}/>
+                  <Route path = "/" element = {<Home greet = "Hello World"/>}/>
                   <Route path = "products" element = {<Products/>}/>
                   <Route path = "products/:prodName" element = {<Product/>}/>
                   <Route path = "signin" element = {<SignIn/>}/>
                   <Route path = "signup" element = {<SignUp/>}/>
+                  <Route path = "addToCart" element = {<AddtoCart/>}/>
                   <Route path = "*" element = {<NotFound/>}/>
               </Routes>
             </Router>

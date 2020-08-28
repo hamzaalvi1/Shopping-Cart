@@ -49,7 +49,9 @@ const useStyles = makeStyles(theme => ({
           </Link>
           <IconButton >
             <Badge badgeContent = {0} color = "secondary">
-            <ShoppingCartIcon className = {classes.icon}/>     
+            <Link to = "addToCart">
+            <ShoppingCartIcon className = {classes.icon}/>
+            </Link>     
             </Badge> 
           </IconButton>
         </Toolbar>
