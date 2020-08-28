@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,6 +6,7 @@ import "./signup.css"
 import TextField from '@material-ui/core/TextField';
 import {useNavigate} from "react-router-dom"
 import Button from '@material-ui/core/Button';
+import {ShoeContext} from "../Context/GlobalState"
 const useStyles = makeStyles((theme) => ({
     root: {
       '& > *': {
@@ -17,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
   }));
 
  const  SignUp = ()=> {
+   const shoeContext = useContext(ShoeContext)
+   const {userDispatch} = shoeContext
    const [signUpState,setSignUpState] = useState({firstName: "",lastName: "",email:"",password: "",})
     const classes = useStyles();
    const navigate = useNavigate()
@@ -27,8 +30,10 @@ const useStyles = makeStyles((theme) => ({
       signUpState.email!=="" &&
       signUpState.password !== ""
       ){
-       navigate("/signin") 
+       userDispatch({type:"ADD_USER",payload:signUpState})
+       navigate("/signin")
       }
+
              
      }
 

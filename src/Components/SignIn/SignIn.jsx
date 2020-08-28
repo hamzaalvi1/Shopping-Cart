@@ -7,6 +7,10 @@ import TextField from '@material-ui/core/TextField';
 import {useNavigate} from "react-router-dom"
 import Button from '@material-ui/core/Button';
 import {ShoeContext} from "../Context/GlobalState"
+import ReactModal from 'react-modal';
+import Typography from '@material-ui/core/Typography';
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
       '& > *': {
@@ -18,15 +22,26 @@ const useStyles = makeStyles((theme) => ({
   }));
 
  const  SignIn = ()=> {
+  const [isModalOpen,isSetModalOpen] = useState(false)
+
   const shoeContext = useContext(ShoeContext)
-  let {isAuthenticated,isLogIn} = shoeContext  
-console.log(shoeContext)
+  let {isAuthenticated,userState} = shoeContext  
   const [signInData,setSignInData] = useState({email: "",password: ""})
   const onSignInSubmit = (evt)=>{
    evt.preventDefault()
    if(signInData.email!== "" && signInData.password!== ""){
-     isAuthenticated = true
-     navigate("/products")
+     isAuthenticated = !isAuthenticated;
+     const users = userState.filter((user)=>{
+      return user.email === signInData.email
+     })
+     if(users.length){
+      navigate("/products")
+     } 
+     else{
+      isSetModalOpen(true)
+     }
+     setSignInData({email: "",password:""})
+     
   }
   }
     const classes = useStyles();
@@ -49,6 +64,25 @@ console.log(shoeContext)
             </Paper>
             
             </Grid>
+            <ReactModal isOpen = {isModalOpen} shouldCloseOnOverlayClick={true} className = "modal" style = {{overlay:{backgroundColor: "grey"}}}>
+             <div style = {{display:"flex",flexDirection: "column",justifyContent:"center",alignItems:"center"}}>   
+             <Typography gutterBottom variant="h3" component="h2" className={classes.font}>
+            Dear User!
+          </Typography>
+          <Typography gutterBottom variant="h4" component="h2" className={classes.font}>
+            You need to SignUp first to add this item into cart....
+          </Typography>
+          <div style = {{display: "flex", flexDirection: "row",}}> 
+          <Button className = "more-info" onClick = {()=>{navigate("/signup")}} >
+          Click here to Login 
+        </Button>
+        <Button className = "more-info" style ={{marginLeft: "10px"}} onClick = {()=>{isSetModalOpen(false)}} >
+          Close Modal 
+        </Button>
+        </div>
+        </div>
+       </ReactModal>
+
         </div>
     )
 }
