@@ -41,6 +41,7 @@ const useStyles = makeStyles({
   const navigate = useNavigate()
     const classes = useStyles();
      const {shoes,isAuthenticated} = useContext(ShoeContext)
+     console.log(isAuthenticated)
     return (
         <div className = "grid">
             <Grid container spacing = {2} direction="row"
@@ -83,12 +84,13 @@ const useStyles = makeStyles({
                  )
              })}
              </Grid>
-             <ReactModal isOpen = {isModalOpen} shouldCloseOnOverlayClick={true} style = {{overlay:{backgroundColor: "grey"}}}>
+             <ReactModal className = "modal" isOpen = {isModalOpen} shouldCloseOnOverlayClick={true} style = {{overlay:{backgroundColor: "#9e9e9e",display:"flex",justifyContent:"center",alignItems:"center",opacity:"95%"}}}>
+             <div style = {{display:"flex",flexDirection: "column",justifyContent:"center",alignItems:"center",height: "30vh"}}>
              <div style = {{display:"flex",flexDirection: "column",justifyContent:"center",alignItems:"center"}}>   
-             <Typography gutterBottom variant="h3" component="h2" className={classes.font}>
+             <Typography gutterBottom variant="h4" component="h3" className={classes.font}>
             Dear User!
           </Typography>
-          <Typography gutterBottom variant="h4" component="h2" className={classes.font}>
+          <Typography gutterBottom variant="h6" component="h3" className={classes.font}>
             You need to log in first to add this item into cart....
           </Typography>
           <div style = {{display: "flex", flexDirection: "row",}}> 
@@ -98,6 +100,7 @@ const useStyles = makeStyles({
         <Button className = "more-info" style ={{marginLeft: "10px"}} onClick = {()=>{isSetModalOpen(false)}} >
           Close Modal 
         </Button>
+        </div>
         </div>
         </div>
        </ReactModal>

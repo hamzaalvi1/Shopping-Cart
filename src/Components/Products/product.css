@@ -5,3 +5,14 @@
     margin: 10px 20px;
     align-items: center;
 }
+.modal{
+    height: 35%;
+    width: 35%;
+    z-index: 999;
+    background-color: white;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 1px 1px 2px grey;
+    
+}
