@@ -1,15 +1,13 @@
-class Auth{
+import {useState} from "react"
 
-isAuthenticated = false;
-
-
-isLogIn(){
-    return this.isAuthenticated = true;
-
+export const Auth = ()=>{
+ const [isAuthenticated,setIsAuthenticated] = useState(false)
+ 
+ const isLogIn = ()=>{
+     setIsAuthenticated(true)
+ }
+ const isLogOut = ()=>{
+     setIsAuthenticated(false)
+ }
+ return {isAuthenticated,isLogIn,isLogOut}
 }
-isLogOut(){
-    return this.isAuthenticated = false
-}
-
-}
-export default new Auth()

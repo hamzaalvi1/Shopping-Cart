@@ -14,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import {Link,useNavigate} from "react-router-dom"
 import ReactModal from 'react-modal';
 import "./product.css"
+
 const useStyles = makeStyles({
     root: {
       maxWidth: 300,
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
   const navigate = useNavigate()
     const classes = useStyles();
      const {shoes,isAuthenticated} = useContext(ShoeContext)
-     console.log(isAuthenticated)
+    
     return (
         <div className = "grid">
             <Grid container spacing = {2} direction="row"

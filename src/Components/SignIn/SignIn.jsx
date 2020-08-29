@@ -31,17 +31,16 @@ const useStyles = makeStyles((theme) => ({
   const [isModalOpen,isSetModalOpen] = useState(false)
 
   const shoeContext = useContext(ShoeContext)
-  let {isAuthenticated,userState} = shoeContext 
-   
+  let {userState,isLogIn} = shoeContext
   const [signInData,setSignInData] = useState({email: "",password: ""})
   const onSignInSubmit = (evt)=>{
    evt.preventDefault()
    if(signInData.email!== "" && signInData.password!== ""){
-     isAuthenticated = !isAuthenticated;
      const users = userState.filter((user)=>{
       return user.email === signInData.email
      })
      if(users.length){
+       isLogIn()
       navigate("/products")
      } 
      else{
