@@ -1,10 +1,13 @@
-import React,{useContext} from 'react'
-import {useParams} from "react-router-dom"
+import React,{useContext,useState} from 'react'
+import {useParams,useNavigate} from "react-router-dom"
 import {ShoeContext} from "../Context/GlobalState"
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import ReactModal from 'react-modal';
+import "./product.css"
+import {  toast } from 'react-toastify'
 
 const useStyles = makeStyles({
     font:{
@@ -23,19 +26,30 @@ const useStyles = makeStyles({
         color: "black",
         fontSize: "22px" ,
         textAlign:"justify"
-    } 
+    },
+    modalFont:{
+      fontFamily: "Lato"
+ 
+    }
     
 })
 
  const  Product = ()=> {
     const classes = useStyles();
+     const navigate = useNavigate()
      const {prodName} = useParams()
      const shoeData = useContext(ShoeContext)
-     const {shoes} = shoeData
+     const {shoes,isAuthenticated,cartDispatch} = shoeData
      const shoeProd = shoes.filter((shoe)=> shoe.title === prodName)
      const [product] = shoeProd
-     console.log(product)
-
+     const [isModalOpen,isSetModalOpen] = useState(false)
+     
+     const addToCart = (shoeDetail)=>{
+      cartDispatch({type:"ADD_CART",payload:shoeDetail})
+      isSetModalOpen(false)
+      toast.dark("Item Added!",{position: "bottom-right",
+      autoClose: 3000,})
+     } 
      return (
         <div className = "mainGrid">
             <Grid container spacing = {1} >
@@ -60,7 +74,8 @@ const useStyles = makeStyles({
                            ) 
                         })}  
                         </Typography>
-                        <Button className = "add-to" color="primary">
+                         <Button className = "add-to" color="primary"
+                         onClick = {()=>isAuthenticated ? addToCart(product)  : isSetModalOpen(true)}>
                          Add To Cart
                        </Button>
                                           
@@ -70,6 +85,26 @@ const useStyles = makeStyles({
                  </Grid>
 
             </Grid>
+            <ReactModal className = "modal" isOpen = {isModalOpen} shouldCloseOnOverlayClick={true} style = {{overlay:{backgroundColor: "#9e9e9e",display:"flex",justifyContent:"center",alignItems:"center",opacity:"95%"}}}>
+             <div style = {{display:"flex",flexDirection: "column",justifyContent:"center",alignItems:"center",height: "30vh"}}>
+             <div style = {{display:"flex",flexDirection: "column",justifyContent:"center",alignItems:"center"}}>   
+             <Typography gutterBottom variant="h4" component="h3" className={classes.modalFont}>
+            Dear User!
+          </Typography>
+          <Typography gutterBottom variant="h6" component="h3" className={classes.modalFont}>
+            You need to log in first to add this item into cart....
+          </Typography>
+          <div style = {{display: "flex", flexDirection: "row",}}> 
+          <Button className = "more-info" onClick = {()=>{navigate("/signin")}} >
+          Click here to Login 
+        </Button>
+        <Button className = "more-info" style ={{marginLeft: "10px"}} onClick = {()=>{isSetModalOpen(false)}} >
+          Close Modal 
+        </Button>
+        </div>
+        </div>
+        </div>
+       </ReactModal>
         </div>
     )
 }

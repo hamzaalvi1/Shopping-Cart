@@ -14,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import {Link,useNavigate} from "react-router-dom"
 import ReactModal from 'react-modal';
 import "./product.css"
+import {  toast } from 'react-toastify'
 
 const useStyles = makeStyles({
     root: {
@@ -38,11 +39,17 @@ const useStyles = makeStyles({
  const  Products = ()=> {
    const [isModalOpen,isSetModalOpen] = useState(false)
    
-
+  
   const navigate = useNavigate()
     const classes = useStyles();
-     const {shoes,isAuthenticated} = useContext(ShoeContext)
-    
+     const {shoes,isAuthenticated,cartDispatch} = useContext(ShoeContext)
+  
+     const addToCart = (shoeDetail)=>{
+      cartDispatch({type:"ADD_CART",payload:shoeDetail})
+      isSetModalOpen(false)
+      toast.dark("Item Added!",{position: "bottom-right",
+      autoClose: 3000,})
+    }
     return (
         <div className = "grid">
             <Grid container spacing = {2} direction="row"
@@ -75,7 +82,7 @@ const useStyles = makeStyles({
         </Button>
         </Link>
 
-        <IconButton onClick = {()=>isAuthenticated ? isSetModalOpen(false): isSetModalOpen(true)} >
+        <IconButton onClick = {()=>isAuthenticated ? addToCart(shoe): isSetModalOpen(true)} >
         <AddShoppingCartIcon className = {classes.icon}    	/>
         </IconButton>
       </CardActions>

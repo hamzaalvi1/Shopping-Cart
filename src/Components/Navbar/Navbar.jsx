@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -9,6 +9,9 @@ import {Link} from 'react-router-dom'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
+import {ShoeContext} from "../Context/GlobalState"
+import {useNavigate} from "react-router-dom"
+
 const useStyles = makeStyles(theme => ({
     title: {
       flexGrow: 2,
@@ -29,9 +32,20 @@ const useStyles = makeStyles(theme => ({
   }));  
 
  const  Navbar = ()=> {
+   const navigate = useNavigate()
+   const logout = ()=>{
+     isLogOut()
+     navigate("/signin")
+   }
    const classes = useStyles();
+   const shoeContext = useContext(ShoeContext)
+   const {userState,isAuthenticated,isLogOut} = shoeContext
+   const [user] = userState
+   const userName = user ? user.firstName : null
+   let  authenticated = isAuthenticated ? <Button color="inherit" className = {classes.font}>{userName}</Button>  : null
+   let  logOutBtn = isAuthenticated ? <Button color="inherit" className = {classes.font} onClick = {logout}>LogOut</Button>  : null
 
-  return (
+   return (
     <div>
       <AppBar position="static" className = {classes.main}>
         <Toolbar>
@@ -43,10 +57,13 @@ const useStyles = makeStyles(theme => ({
           </Link>
           <Link to = "products"> 
           <Button color="inherit" className = {classes.font}>Products</Button>
-          </Link>
+          </Link>{isAuthenticated === false ?
           <Link to = "signin"> 
           <Button color="inherit" className = {classes.font}>Login</Button>
-          </Link>
+          </Link> : null}
+           {logOutBtn}
+           {authenticated}
+
           <IconButton >
             <Badge badgeContent = {0} color = "secondary">
             <Link to = "addToCart">
