@@ -13,7 +13,8 @@ export const addToCartReducer = (cartState,action)=>{
     switch(action.type){
         case "ADD_CART":
           return [...cartState,action.payload]
-        
+         case "DELETE_CART":
+           return cartState.filter((item)=> item._id !== action.payload) 
           default:
             return cartState
     }

@@ -1,13 +1,13 @@
-import React from "react"
+import React, {useContext} from "react"
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 import "./addtoCart.css"
-import image from "../../img2.jpg"
-
+import {ShoeContext} from "../Context/GlobalState"
 const useStyles = makeStyles({
     font:{
       fontFamily: "Lato"
@@ -19,43 +19,61 @@ const useStyles = makeStyles({
   });
 const AddToCart = ()=>{
     const classes = useStyles();
-
-    return(
-        <div className = "cart">
-          <Grid container>
-           <Grid item >
+    const shoeContext = useContext(ShoeContext)
+    console.log(shoeContext)
+    const {cartState,cartDispatch} = shoeContext
+    const deleteCart = (id) => {
+      cartDispatch({type:"DELETE_CART",payload:id})
+    }
+    const addItem = cartState.map((item,idx)=>{
+      return (
+        <div key = {idx}> 
+        
                <Card className = "main-card">
                   <div className = "card-panel" >
                       <div className = "cart-img">
-                     <img src={image} alt="image" width = "120px"/>
+                     <img src={item.src} alt={item.title} width = "120px"/>
                      </div>
                      <div>
                      <Typography gutterBottom variant="h5" component="h2" className = {classes.font} >
-                      Air Bullet Snickers
+                      {item.title}
                     </Typography>
                      <div className = "shoe-desc">        
                      <Typography gutterBottom variant="h5" component="h2"className = {classes.font} >
-                      $100
+                      {item.price}
                     </Typography>
-                    <Button>+</Button>
+                    <Button>-</Button>
                     <Typography gutterBottom variant="h6" component="h2"className = {classes.font} >
                       1
                     </Typography>
-                    <Button>-</Button>
-                                         
+                    <Button>+</Button>
+                    <IconButton onClick = {()=>deleteCart(item._id)} style = {{color:"Black"}}><DeleteIcon /></IconButton>                    
+
                     </div>
                     <Typography variant="body2" color="textSecondary" component="p"  className = {classes.font}>
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, ex!
+                       {item.desc.slice(0,100)}
+                     
                      </Typography>
+
                      </div>
                       
                   </div>
                  
                </Card>
-           </Grid>
-           <Grid item >
-               Nice meeing you
-           </Grid>
+          
+           </div>
+      )
+    })
+    return(
+        <div className = "cart">
+          <Grid container>
+          <Grid item >
+            {cartState.length ? addItem : "No Items" }
+            </Grid>
+            <Grid item >
+              Hello World
+            </Grid>
+                
           </Grid>
 
         </div>
