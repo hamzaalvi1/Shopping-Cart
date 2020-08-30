@@ -1,0 +1,42 @@
+.home{
+    background-image: url("../../background-shoe-img.jpg");
+    height: 90vh;
+    background-position: center ;
+    background-size: cover;
+}
+.main-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+.main-text h2{
+    text-align: center;
+    font-size: 65px;
+    color: white;
+    font-family: 'Kaushan Script';
+    /* font-weight: 900;
+    font-style: italic; */
+    text-shadow: 2px 2px 1px black;
+}
+.main-text h3{
+font-family: 'Kaushan Script';
+text-shadow: 2px 2px 1px black;
+
+text-align: center;
+font-size: 65px;
+color: white;
+;
+/* font-weight: 900;
+font-style: italic; */
+
+}
+ .main{
+    font-family: "Lato" !important;
+    background-color: black !important;
+    color: white !important;
+    margin: 5px !important;
+    width: 200px !important;
+    height: 40px !important ; 
+  }

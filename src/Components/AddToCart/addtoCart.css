@@ -33,3 +33,10 @@ img{
     border-bottom: 1px solid black;
     margin: 15px 0px;
 }
+.main{
+    font-family: "Lato" !important;
+    background-color: #212121 !important;
+    color: white !important;
+    margin: 10px !important;
+    padding: 20px 
+  }
