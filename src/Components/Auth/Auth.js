@@ -1,7 +1,7 @@
 import {useState} from "react"
 
 export const Auth = ()=>{
- const [isAuthenticated,setIsAuthenticated] = useState(true)
+ const [isAuthenticated,setIsAuthenticated] = useState(false)
  
  const isLogIn = ()=>{
      setIsAuthenticated(true)

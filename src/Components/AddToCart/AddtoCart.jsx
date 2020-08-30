@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 const AddToCart = ()=>{
 
     const classes = useStyles();
+    
     const shoeContext = useContext(ShoeContext)
     const {cartState,cartDispatch} = shoeContext
     const deleteCart = (id) => {
@@ -32,6 +33,8 @@ const AddToCart = ()=>{
       cartDispatch({type: "MINUS_QUANTITY",payload:id})
     }
     const totalCost = cartState.reduce((prev,currentItem)=> prev + (currentItem.price * currentItem.quantity),0)
+    let tax = totalCost * 8/100
+   
     const addItem = cartState.map((item,idx)=>{
       return (
         <div key = {idx}> 
@@ -71,14 +74,50 @@ const AddToCart = ()=>{
            </div>
       )
     })
+    const totalAmountCard = (
+      <Card className = "main-card">
+        <Typography gutterBottom variant="h5" component="h2" className = {classes.font} style= {{textAlign: "center"}} >
+          Your Purchases            
+        </Typography>
+        <div className = "T-amount"> 
+        <Typography gutterBottom variant="h6" component="h2" className = {classes.font} >
+          Current Amount            
+        </Typography>
+        <Typography gutterBottom variant="h6" component="h2" className = {classes.font} >
+        {totalCost ? totalCost : 0}$             
+        </Typography>
+        </div>
+        <div className = "T-amount"> 
+        <Typography gutterBottom variant="h6" component="h2" className = {classes.font} >
+          Tax            
+        </Typography>
+        <Typography gutterBottom variant="h6" component="h2" className = {classes.font} >
+        {tax}$             
+        </Typography>
+        </div>
+        <div className = "T-amount"> 
+        <Typography gutterBottom variant="h6" component="h2" className = {classes.font} >
+          Total Amount            
+        </Typography>
+        <Typography gutterBottom variant="h6" component="h2" className = {classes.font} >
+        {totalCost + tax}$             
+        </Typography>
+        </div> 
+        <Button className = "add-to" color="primary"
+        onClick = {()=>{cartDispatch({type: "CLEAR_ALL"})}}>
+          Clear All
+          </Button>
+      </Card>
+    )
     return(
         <div className = "cart">
           <Grid container>
           <Grid item >
-            {cartState.length ? addItem : "No Items" }
-            </Grid>
+            {cartState.length ? addItem : null  }
+          
+            </Grid >
             <Grid item >
-            <h2>{totalCost ? totalCost : 0}</h2>
+            {cartState.length ? totalAmountCard  : null}
             </Grid>
                 
           </Grid>

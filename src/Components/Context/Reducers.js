@@ -19,7 +19,8 @@ export const addToCartReducer = (cartState,action)=>{
             return cartState.filter((item)=> item._id === action.payload ? item.quantity += 1 : item.quantity ) 
            case "MINUS_QUANTITY":
              return cartState.filter((item)=> item._id === action.payload && item.quantity !== 1 ? item.quantity -=1 : item.quantity)   
-            
+            case "CLEAR_ALL":
+            return cartState = []
             default:
             return cartState
     }

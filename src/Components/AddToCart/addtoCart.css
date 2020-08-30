@@ -26,3 +26,10 @@ img{
 .shoe-desc button{
     height:  50%;
 }
+.T-amount{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    margin: 15px 0px;
+}

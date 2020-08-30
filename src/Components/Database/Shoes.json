@@ -50,7 +50,7 @@
         "title": "Blue Slippers",
         "desc": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ratione minus impedit? Neque distinctio nam asperiores consequuntur, quisquam corrupti ea?",
         "src": "https://www.upsieutoc.com/images/2020/06/27/img6.jpg",
-        "price": "170$",
+        "price": 170,
         "colors":["orange","black","crimson","teal"],
         "quantity": 1
         
