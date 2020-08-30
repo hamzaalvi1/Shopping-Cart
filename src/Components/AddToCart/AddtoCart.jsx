@@ -18,13 +18,20 @@ const useStyles = makeStyles({
 
   });
 const AddToCart = ()=>{
+
     const classes = useStyles();
     const shoeContext = useContext(ShoeContext)
-    console.log(shoeContext)
     const {cartState,cartDispatch} = shoeContext
     const deleteCart = (id) => {
       cartDispatch({type:"DELETE_CART",payload:id})
     }
+    const incrementItem = (id)=>{
+      cartDispatch({type: "ADD_QUANTITY",payload:id})
+    }
+    const decrementItem = (id)=>{
+      cartDispatch({type: "MINUS_QUANTITY",payload:id})
+    }
+    const totalCost = cartState.reduce((prev,currentItem)=> prev + (currentItem.price * currentItem.quantity),0)
     const addItem = cartState.map((item,idx)=>{
       return (
         <div key = {idx}> 
@@ -40,13 +47,13 @@ const AddToCart = ()=>{
                     </Typography>
                      <div className = "shoe-desc">        
                      <Typography gutterBottom variant="h5" component="h2"className = {classes.font} >
-                      {item.price}
+                      {item.price * item.quantity}$
                     </Typography>
-                    <Button>-</Button>
+                    <Button onClick = {()=>decrementItem(item._id)} >-</Button>
                     <Typography gutterBottom variant="h6" component="h2"className = {classes.font} >
-                      1
+                      {item.quantity}
                     </Typography>
-                    <Button>+</Button>
+                    <Button onClick = {()=>incrementItem(item._id)}  >+</Button>
                     <IconButton onClick = {()=>deleteCart(item._id)} style = {{color:"Black"}}><DeleteIcon /></IconButton>                    
 
                     </div>
@@ -71,7 +78,7 @@ const AddToCart = ()=>{
             {cartState.length ? addItem : "No Items" }
             </Grid>
             <Grid item >
-              Hello World
+            <h2>{totalCost ? totalCost : 0}</h2>
             </Grid>
                 
           </Grid>

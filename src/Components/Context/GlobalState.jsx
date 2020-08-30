@@ -1,4 +1,4 @@
-import React, {createContext,useReducer} from "react"
+import React, {createContext,useReducer,} from "react"
 import ShoesData from "../Database/Shoes.json"
 import {usersReducer,addToCartReducer} from "./Reducers"
 import {Auth} from "../Auth/Auth"
@@ -10,6 +10,8 @@ export const ShoeProvider = ({children})=>{
 const userSignUp = [];
 const cartItems = [];
 
+   
+ 
 const {isAuthenticated,isLogIn,isLogOut} = Auth()
 // const [isAuthenticated,setIsAuthenticated] = useState(false)
 const [userState,userDispatch] = useReducer(usersReducer,userSignUp)

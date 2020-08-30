@@ -61,7 +61,7 @@ const useStyles = makeStyles({
                       {product.desc}{product.desc}
                      </Typography>  
                      <Typography gutterBottom variant="h5" component="h2" className={classes.marginPadding02}>
-                       Price: {product.price}
+                       Price: {product.price}$
                       </Typography>
                       
                         <Typography variant="h5" component="h2" className={classes.marginPadding02}> 
